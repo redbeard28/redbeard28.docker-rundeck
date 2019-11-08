@@ -1,0 +1,9 @@
+---
+# defaults file for redbeard28.docker-rundeck
+ENV_RUNDECK_DATABASE_URL: 'jdbc:postgresql://hostname_postgres:5432/rundeckdb'
+ENV_POSTGRES_USER: 'posgresUSER'
+ENV_POSTGRES_PASSWORD: 'mybigsecretpassword'
+ENV_RUNDECK_EXTERNAL_URL: 'https://myexternal_url.mydomain.com'
+ENV_RUNDECK_MAIL_SMTP_PORT: '25'
+ENV_RUNDECK_MAIL_SMTP_HOST: 'mysmtp.domain.com'
+ENV_RUNDECK_PORT: '4440'

@@ -1,0 +1,19 @@
+version: '3.5'
+services:
+  rundeck:
+    image: redbeard28/rundeck-python3:0.1
+    volumes:
+      -
+    environment:
+      RUNDECK_DATABASE_ENGINE: postgres
+      RUNDECK_DATABASE_DRIVER: org.postgresql.Driver
+      RUNDECK_DATABASE_URL: "{{ ENV_RUNDECK_DATABASE_URL }}"
+      RUNDECK_DATABASE_USERNAME: {{ ENV_POSTGRES_USER }}
+      RUNDECK_DATABASE_PASSWORD: "{{ ENV_POSTGRES_PASSWORD }}"
+      RUNDECK_SERVER_ADDRESS: 0.0.0.0
+      RUNDECK_GRAILS_URL: '{{ ENV_RUNDECK_EXTERNAL_URL }}'
+      RUNDECK_MAIL_SMTP_PORT: "{{ ENV_RUNDECK_MAIL_SMTP_PORT }}"
+      RUNDECK_MAIL_SMTP_HOST: "{{ ENV_RUNDECK_MAIL_SMTP_HOST }}"
+    ports:
+      - "{{ ENV_RUNDECK_PORT }}:4440"
+

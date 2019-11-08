@@ -1,2 +1,26 @@
 ---
-# tasks file for redbeard28.docker-rundeck
+- include_tasks: setup_folders_host.yml
+
+- name: "Run Rundeck Container"
+    docker_container:
+      name: 'rundeck-web'
+      recreate: true
+      restart_policy: always
+      image: 'redbeard28/rundeck-python3:0.1'
+      env:
+        RUNDECK_DATABASE_ENGINE: postgres
+        RUNDECK_DATABASE_DRIVER: org.postgresql.Driver
+        RUNDECK_DATABASE_URL: "{{ ENV_RUNDECK_DATABASE_URL }}"
+        RUNDECK_DATABASE_USERNAME: "{{ ENV_POSTGRES_USER }}"
+        RUNDECK_DATABASE_PASSWORD: "{{ ENV_POSTGRES_PASSWORD }}"
+        RUNDECK_SERVER_ADDRESS: 0.0.0.0
+        RUNDECK_GRAILS_URL: '{{ ENV_RUNDECK_EXTERNAL_URL }}'
+        RUNDECK_MAIL_SMTP_PORT: "{{ ENV_RUNDECK_MAIL_SMTP_PORT }}"
+        RUNDECK_MAIL_SMTP_HOST: "{{ ENV_RUNDECK_MAIL_SMTP_HOST }}"
+      published_ports:
+        - "{{ ENV_RUNDECK_PORT }}:4440"
+      volumes:
+        - "{{ ENV_RUNDECK_PATH_RESOURCES }}:/home/rundeck/resources"
+        - "{{ ENV_RUNDECK_PATH_PROJECTS }}:/home/rundeck/projects"
+        - "{{ ENV_RUNDECK_PATH_SERVER }}:/home/rundeck/server"
+        - "{{ ENV_RUNDECK_PATH_SSH }}:/home/rundeck/.ssh"

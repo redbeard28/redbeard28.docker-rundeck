@@ -1,0 +1,12 @@
+---
+- name: "Creates directory"
+  file:
+    path: "{{ item }}"
+    state: directory
+  with_items:
+    - "{{ ENV_RUNDECK_PATH_RESOURCES }}"
+    - "{{ ENV_RUNDECK_PATH_PROJECTS }}"
+    - "{{ ENV_RUNDECK_PATH_SERVER }}"
+    - "{{ ENV_RUNDECK_PATH_SSH }}"
+
+# TODO: Templating files for rundeck

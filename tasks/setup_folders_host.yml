@@ -1,4 +1,10 @@
 ---
+- name: "Creates main path of containers host volumes"
+  file:
+    path: "{{ ENV_MAIN_PATH }}"
+    state: directory
+
+
 - name: "Creates directory"
   file:
     path: "{{ item }}"

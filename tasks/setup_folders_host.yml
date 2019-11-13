@@ -3,12 +3,14 @@
   file:
     path: "{{ ENV_MAIN_PATH }}"
     state: directory
+    recurse: yes
 
 
 - name: "Creates directory"
   file:
     path: "{{ item }}"
     state: directory
+    recurse: yes
   with_items:
     - "{{ ENV_RUNDECK_PATH_RESOURCES }}"
     - "{{ ENV_RUNDECK_PATH_PROJECTS }}"

@@ -12,6 +12,7 @@ You must provide an posgres server with already a database for rundeck.
 Role Variables
 --------------
 ```yaml
+ENV_RUNDECK_IMAGE: 'redbeard28/rundeck-python3:0.1'
 ENV_RUNDECK_DATABASE_URL: 'jdbc:postgresql://hostname_postgres:5432/rundeckdb'
 ENV_POSTGRES_USER: 'postgresUSER'
 ENV_POSTGRES_PASSWORD: 'mybigsecretpassword'

@@ -1,12 +1,16 @@
 ---
 - include_tasks: setup_folders_host.yml
 
+- name: "Install docker ansible module"
+  pip:
+    name: docker-py
+
 - name: "Run Rundeck Container"
   docker_container:
     name: 'rundeck-web'
     recreate: true
     restart_policy: always
-    image: 'redbeard28/rundeck-python3:0.1'
+    image: '{{ ENV_RUNDECK_IMAGE }}'
     env:
       RUNDECK_DATABASE_ENGINE: postgres
       RUNDECK_DATABASE_DRIVER: org.postgresql.Driver
